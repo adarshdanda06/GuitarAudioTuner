@@ -1,34 +1,24 @@
-[build-system]
-requires = ["hatchling>=1.10"]
-build-backend = "hatchling.build"
-
 [project]
-name = "guitar-analyzer-backend"
+name = "backend"
 version = "0.1.0"
-description = "Flask backend for Guitar Performance Analyzer"
+description = ""
+authors = [
+    {name = "Adarsh Danda",email = "adarsh.danda1@gmail.com"}
+]
 readme = "README.md"
-requires-python = ">=3.10"
-authors = [ { name = "Your Name", email = "you@example.com" } ]
-license = { text = "MIT" }
-keywords = ["audio", "music", "librosa", "flask"]
-classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License"]
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "flask (>=3.1.3,<4.0.0)",
+    "ffmpeg-python (>=0.2.0,<0.3.0)",
+    "librosa (>=0.11.0,<0.12.0)",
+    "scipy (>=1.17.1,<2.0.0)",
+    "numpy (>=2.4.4,<3.0.0)",
+    "matplotlib (>=3.10.9,<4.0.0)",
+    "soundfile (>=0.13.1,<0.14.0)",
+    "flask-cors (>=6.0.2,<7.0.0)"
+]
 
-[project.dependencies]
-Flask = ">=2.0"
-flask-cors = ">=3.0"
-ffmpeg-python = ">=0.2.0"
-librosa = ">=0.9.2"
-scipy = ">=1.8"
-numpy = ">=1.22"
-matplotlib = ">=3.5"
-soundfile = ">=0.11"
 
-[project.optional-dependencies]
-dev = ["pytest", "black", "isort", "pre-commit"]
-
-[project.scripts]
-start = "backend.app:run_app"
-
-[project.urls]
-Homepage = "https://example.com/"
-Repository = "https://github.com/youruser/GuitarAudioTuner"
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

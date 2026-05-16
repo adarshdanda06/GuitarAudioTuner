@@ -9,18 +9,26 @@ Install ffmpeg
 - macOS (Homebrew): brew install ffmpeg
 - Ubuntu/Debian: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-Python dependencies (example)
+Setup & Run (development)
 
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install flask numpy librosa scipy matplotlib ffmpeg-python werkzeug
+1. Create and activate a virtual environment:
+   ```bash
+   cd backend
+   python -m venv venv
+   source venv/bin/activate   # On Windows: venv\Scripts\activate
+   ```
 
-Run (development)
-cd backend
-python app.py
-# server will listen on http://127.0.0.1:5000
+2. Upgrade pip and install dependencies:
+   ```bash
+   pip install --upgrade pip
+   pip install flask flask-cors ffmpeg-python librosa scipy numpy matplotlib soundfile
+   ```
+
+3. Run the development server:
+   ```bash
+   python app.py
+   ```
+   The server will listen on http://127.0.0.1:5000
 
 API
 - POST /convert
