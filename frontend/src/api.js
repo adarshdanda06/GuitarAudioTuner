@@ -7,6 +7,9 @@
 //   // Analyze two audio files with optional params
 //   const result = await analyzeFiles(referenceFile, userFile, { pitchTolerance: 0.5 });
 
+// Base URL for backend API. Can be overridden with Vite env var VITE_API_URL.
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+
 // Upload helper left as a placeholder for other features
 export async function uploadAudio(file) {
   // Not used by current UI; implement when needed.
@@ -23,7 +26,7 @@ export async function convertFile(file) {
 
   let res;
   try {
-    res = await fetch('/convert', {
+    res = await fetch(`${BASE_URL}/convert`, {
       method: 'POST',
       body: fd,
     });
@@ -76,7 +79,7 @@ export async function analyzeFiles(refFile, userFile, params = {}) {
 
   let res;
   try {
-    res = await fetch('/analyze', {
+    res = await fetch(`${BASE_URL}/analyze`, {
       method: 'POST',
       body: fd,
     });
