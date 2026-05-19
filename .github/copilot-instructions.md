@@ -7,17 +7,17 @@ This file gives repository-specific guidance for future Copilot CLI sessions and
 ## Build, test, and lint commands
 
 Backend (Flask, Python)
-- Use Poetry for dependency management and running commands:
+- Use uv for dependency management and running commands:
   - cd backend
-  - poetry install                # installs from pyproject.toml
-  - To add a dependency: `poetry add <dependency-name>`
-  - To run a one-off command in the virtualenv: `poetry run <command>`
-- Common commands (using Poetry):
-  - Install dependencies: poetry install
-  - Add a package: poetry add flask-cors
-  - Run dev server: poetry run python app.py
-  - Run a single test: poetry run pytest tests/test_some_module.py -q
-  - Run all tests: poetry run pytest -q
+  - uv install                # installs from pyproject.toml
+  - To add a dependency: `uv add <dependency-name>`
+  - To run a one-off command in the project environment: `uv run <command>`
+- Common commands (using uv):
+  - Install dependencies: uv install
+  - Add a package: uv add flask-cors
+  - Run dev server: uv run python app.py
+  - Run a single test: uv run pytest tests/test_some_module.py -q
+  - Run all tests: uv run pytest -q
   (If you prefer a dedicated venv: python -m venv .venv && source .venv/bin/activate)
 
 
