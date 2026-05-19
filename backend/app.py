@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, jsonify, send_file, after_this_request
 from werkzeug.exceptions import RequestEntityTooLarge
 
-from backend.convert import convert_mp4_to_mp3
+from convert import convert_mp4_to_mp3
 import tempfile
 from werkzeug.utils import secure_filename
 
@@ -15,6 +15,10 @@ app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 def handle_large_file(e):
     return jsonify({"error": "File too large. Max size is 50 MB."}), 413
 
+
+@app.route('/', methods=['GET'])
+def base_route():
+    return jsonify({"message": "App is running"}, 200)
 
 @app.route('/convert', methods=['POST'])
 def convert_route():
@@ -114,7 +118,7 @@ def analyze_route():
             user_file.save(user_path)
 
             # Import analyze_files lazily to avoid heavy imports at module import time
-            from backend.analyze import analyze_files
+            from analyze import analyze_files
             result = analyze_files(ref_path, user_path, threshold_db, n_fft, hop_length)
             return jsonify(result), 200
     except RequestEntityTooLarge:
